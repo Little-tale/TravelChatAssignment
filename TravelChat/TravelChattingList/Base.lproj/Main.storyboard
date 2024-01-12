@@ -46,10 +46,13 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Rwat" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xqz-Me-1NE">
-                                                <rect key="frame" x="40" y="0.0" width="325" height="36"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xqz-Me-1NE">
+                                                <rect key="frame" x="40" y="4" width="325" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldKeyboard:" destination="kva-fR-ksD" eventType="editingDidEndOnExit" id="LX5-ne-IpO"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -57,9 +60,9 @@
                                             <constraint firstAttribute="bottom" secondItem="RMC-Hl-aGL" secondAttribute="bottom" constant="4" id="2NN-cq-qQK"/>
                                             <constraint firstItem="RMC-Hl-aGL" firstAttribute="top" secondItem="6vu-VW-bWM" secondAttribute="top" constant="4" id="Gfu-QT-r0x"/>
                                             <constraint firstAttribute="trailing" secondItem="Xqz-Me-1NE" secondAttribute="trailing" constant="4" id="KCk-5h-wWQ"/>
-                                            <constraint firstItem="Xqz-Me-1NE" firstAttribute="top" secondItem="6vu-VW-bWM" secondAttribute="top" id="b7G-f9-wQs"/>
+                                            <constraint firstItem="Xqz-Me-1NE" firstAttribute="top" secondItem="6vu-VW-bWM" secondAttribute="top" constant="4" id="WmL-To-wcf"/>
                                             <constraint firstItem="Xqz-Me-1NE" firstAttribute="leading" secondItem="RMC-Hl-aGL" secondAttribute="trailing" constant="8" id="cU9-k4-cBH"/>
-                                            <constraint firstAttribute="bottom" secondItem="Xqz-Me-1NE" secondAttribute="bottom" id="m3F-C8-BUV"/>
+                                            <constraint firstAttribute="bottom" secondItem="Xqz-Me-1NE" secondAttribute="bottom" constant="4" id="mUg-Ft-uqn"/>
                                             <constraint firstItem="RMC-Hl-aGL" firstAttribute="leading" secondItem="6vu-VW-bWM" secondAttribute="leading" constant="4" id="mmR-Bi-E9Z"/>
                                         </constraints>
                                     </view>
@@ -102,7 +105,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="TRAVEL TALK" id="Hgp-CV-YHN"/>
                     <connections>
+                        <outlet property="backgroundView" destination="6vu-VW-bWM" id="ARh-hS-nWM"/>
                         <outlet property="chattingListTabelView" destination="Svu-0B-bEc" id="yQo-ik-F2u"/>
+                        <outlet property="searchButton" destination="RMC-Hl-aGL" id="U8f-sZ-daH"/>
+                        <outlet property="searchTextField" destination="Xqz-Me-1NE" id="xZw-8e-90z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oex-S7-Wvi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

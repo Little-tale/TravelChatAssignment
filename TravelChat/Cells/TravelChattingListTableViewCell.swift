@@ -16,6 +16,7 @@ class TravelChattingListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        designProfileName()
         
     }
 
@@ -41,5 +42,13 @@ extension TravelChattingListTableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         designMainImage()
+    }
+}
+
+// MARK: - 디자인 영역-
+extension TravelChattingListTableViewCell {
+    
+    func designProfileName(){
+        DesignLabel.ProfileName.setting(UILabel: ProfileMainLabel)
     }
 }

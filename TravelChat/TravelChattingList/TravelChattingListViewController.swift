@@ -14,6 +14,10 @@ let chattingListXib = UINib(nibName: "TravelChattingListTableViewCell", bundle: 
 
 class TravelChattingListViewController: UIViewController {
     @IBOutlet var chattingListTabelView: UITableView!
+    @IBOutlet var backgroundView: UIView!
+    @IBOutlet var searchTextField: UITextField!
+    @IBOutlet var searchButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +26,16 @@ class TravelChattingListViewController: UIViewController {
         chattingListTabelView.delegate = self
         chattingListTabelView.dataSource = self
         
+        // MARK: - 설치바 디자인
+        designSearchBarView()
+        
+        
     }
 
-
+    @IBAction func textFieldKeyboard(_ sender: UITextField) {
+        view.endEditing(true)
+    }
+    
 }
 
 extension TravelChattingListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -76,13 +87,31 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
     
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
-    
-   
-    override func viewDidLayoutSubviews() {
-        
+        return DesignForRow.TalkRoom.setting
     }
     
 }
+
+
+// MARK: - 설치바 디자인 구현
+extension TravelChattingListViewController {
+    func designSearchBarView(){
+        DesignTextFild.search.setting(UITextField: searchTextField,backgroundView: backgroundView )
+        DesignButton.search.setting(UIButton: searchButton)
+    }
+}
+
+extension TravelChattingListViewController {
+    
+}
+
+
+
+
+
+
+
+
+
+
 
