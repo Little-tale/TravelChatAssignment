@@ -18,6 +18,7 @@
 		7BDD67682B5134DF0044341D /* TravelChattingListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BDD67662B5134DF0044341D /* TravelChattingListTableViewCell.xib */; };
 		7BDD676C2B513C530044341D /* TravelChattingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDD676B2B513C530044341D /* TravelChattingListViewController.swift */; };
 		7BDD676F2B5140700044341D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7BDD676E2B5140700044341D /* Kingfisher */; };
+		7BDD67722B5166420044341D /* TravelTalkDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDD67712B5166420044341D /* TravelTalkDesign.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		7BDD67652B5134DF0044341D /* TravelChattingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelChattingListTableViewCell.swift; sourceTree = "<group>"; };
 		7BDD67662B5134DF0044341D /* TravelChattingListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelChattingListTableViewCell.xib; sourceTree = "<group>"; };
 		7BDD676B2B513C530044341D /* TravelChattingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelChattingListViewController.swift; sourceTree = "<group>"; };
+		7BDD67712B5166420044341D /* TravelTalkDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTalkDesign.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		7BDD67462B512EA20044341D /* TravelChat */ = {
 			isa = PBXGroup;
 			children = (
+				7BDD67702B5162790044341D /* designModel */,
 				7BDD67622B5134650044341D /* Cells */,
 				7BDD675F2B512FD90044341D /* Model */,
 				7BDD675C2B512F010044341D /* TTravelChatScreen */,
@@ -111,6 +114,14 @@
 				7BDD67662B5134DF0044341D /* TravelChattingListTableViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		7BDD67702B5162790044341D /* designModel */ = {
+			isa = PBXGroup;
+			children = (
+				7BDD67712B5166420044341D /* TravelTalkDesign.swift */,
+			);
+			path = designModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +208,7 @@
 				7BDD675E2B512FB80044341D /* ChattingData.swift in Sources */,
 				7BDD67482B512EA20044341D /* AppDelegate.swift in Sources */,
 				7BDD674A2B512EA20044341D /* SceneDelegate.swift in Sources */,
+				7BDD67722B5166420044341D /* TravelTalkDesign.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

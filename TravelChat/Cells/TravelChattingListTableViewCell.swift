@@ -22,7 +22,24 @@ class TravelChattingListTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        
     }
     
+  
+}
+
+// MARK: - 이미지 코너 레디우스 영역
+extension TravelChattingListTableViewCell {
+
+    //Thread 1: Fatal error: Unexpectedly found nil while implicitly unwrapping an Optional value
+    func designMainImage() {
+        let width = ProfileImageView.frame.width
+        DesignImage.Profile.setting(imageView: ProfileImageView, imageWidth: width)
+    }
+    
+    // MARK: - 레이아웃 변동시 함수 실행
+    // 화난다.... Super. 거시기가 없어서 안됬었다.
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        designMainImage()
+    }
 }

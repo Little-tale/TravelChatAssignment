@@ -64,18 +64,25 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
         // MARK: - 이미지 넣어주기
         // 와 잠만... 아... 옵션은 일단 한개만 해보고 넘어가 보자
         // 잭님 부분에서 휴님 튀어나와서 놀래서 일단은 잭님으로 수정했다.
-        print(chatindexRow.chatroomImage.first)
+        // print(chatindexRow.chatroomImage.first)
         cell.ProfileImageView.image = UIImage(named: chatindexRow.chatroomImage.first ?? "Hue")
         
+        // MARK: - 이미지 디자인 -> 셀
+        // 디자인은 셀에서 처리해 보자.
+      
         
         return cell
     }
     
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
     
+   
+    override func viewDidLayoutSubviews() {
+        
+    }
     
 }
 
