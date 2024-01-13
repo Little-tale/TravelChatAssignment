@@ -60,11 +60,19 @@ enum DesignTextFild {
 }
 enum DesignLabel {
     case ProfileName
+    case ProfileMessage
+    case date
     
     func setting(UILabel uil: UILabel) {
         switch self{
         case .ProfileName :
             uil.font = .boldSystemFont(ofSize: 16)
+        case .ProfileMessage :
+            uil.font = .systemFont(ofSize: 14)
+            uil.textColor = .systemGray
+        case .date :
+            uil.textColor = .systemGray3
+            uil.font = .systemFont(ofSize: 12)
         }
     }
 }

@@ -31,10 +31,33 @@ class TravelChattingListViewController: UIViewController {
         
         
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       // 스토리보드 찾기
+        let ChattiongRoomstoryBoard = UIStoryboard(name: "ChattingRoomStoryboard", bundle: nil)
+        // 스토리 보드 안에 있는 뷰 찾기
+        let storyBoardView = ChattiongRoomstoryBoard.instantiateViewController(withIdentifier: "ChattingRoomViewController") as! ChattingRoomViewController
+        
+        // 해당 뷰컨 으로 형변환
+        // 해당 스토리 보드에 받을 공간 만들고
+        // 그공간에 전달
+        
+        
+        // 차라리 ChatRoom을 넘겨준다면?
+        storyBoardView.userName = mockChatList[indexPath.row].chatroomName
+        
+        
+        
+        // 푸시 연결
+        navigationController?.pushViewController(storyBoardView, animated: true)
+        
+        
+    }
 
     @IBAction func textFieldKeyboard(_ sender: UITextField) {
         view.endEditing(true)
     }
+    
     
 }
 
@@ -89,6 +112,7 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return DesignForRow.TalkRoom.setting
     }
+    
     
 }
 

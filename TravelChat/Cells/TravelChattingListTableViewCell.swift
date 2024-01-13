@@ -6,6 +6,7 @@
 //
 
 import UIKit
+// LeftUserChattingTableViewCell
 
 class TravelChattingListTableViewCell: UITableViewCell {
     @IBOutlet var ProfileImageView: UIImageView!
@@ -16,8 +17,7 @@ class TravelChattingListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        designProfileName()
-        
+        design()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,7 +48,20 @@ extension TravelChattingListTableViewCell {
 // MARK: - 디자인 영역-
 extension TravelChattingListTableViewCell {
     
+    func design(){
+        designProfileName()
+        designProfileMessage()
+        designDateLabel()
+    }
+    
     func designProfileName(){
         DesignLabel.ProfileName.setting(UILabel: ProfileMainLabel)
+    }
+    func designProfileMessage(){
+        DesignLabel.ProfileMessage.setting(UILabel: ProfileSubLabel)
+    }
+    
+    func designDateLabel(){
+        DesignLabel.date.setting(UILabel: ProfileDateLabel)
     }
 }
