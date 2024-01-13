@@ -87,7 +87,10 @@ struct Chat {
         
         guard let dateDate = dateFormetter.date(from: self.date) else {return ""}
         
-        dateFormetter.dateFormat = "HH:mm"
+        // a 오전 오후 나옴
+        dateFormetter.dateFormat = "HH:mm a"
+        
+        dateFormetter.locale = Locale(identifier: "ko_KR")
         
         let dateString = dateFormetter.string(from: dateDate)
         

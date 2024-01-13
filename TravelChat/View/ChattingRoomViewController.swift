@@ -22,6 +22,8 @@ let ChattingRoomXib = UINib(nibName: "LeftUserChattingTableViewCell", bundle: ni
 class ChattingRoomViewController: UIViewController {
     @IBOutlet var chattingRoomTabelView: UITableView!
     var userName : String = ""
+    var chatRoom : ChatRoom?
+    var chat: [Chat?] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,13 +59,37 @@ class ChattingRoomViewController: UIViewController {
 
 extension ChattingRoomViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        return chatRoom?.chatList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeftUserChattingTableViewCell", for: indexPath) as! LeftUserChattingTableViewCell
                 
-        cell.profileNameLabel.text = userName
+        // cell.profileNameLabel.text = userName
+        cell.profileNameLabel.text = chatRoom?.chatList[indexPath.row].user.rawValue
+        
+        cell.ProfileMessageLabel.text = chatRoom?.chatList[indexPath.row].message
+        
+        
+        // MARK: - 이미지 넣기
+        guard let chatListOf = chatRoom?.chatList[indexPath.row] else {
+            return cell
+        }
+        
+        let miniProfileImage = chatListOf.user.profileImage
+        
+        cell.ProfileMiniImageView.image = UIImage(named: miniProfileImage)
+        
+        
+        cell.dateLabel.text = chatListOf.getTime
+        
+        DesignLabel.date.setting(UILabel: cell.dateLabel)
+        
+        DesignLabel.chatRoomMessageLeft.setting(UILabel: cell.ProfileMessageLabel)
+        
+        DesignBackground.leftChat.setting(UIView: cell.chattingLeftView)
+        
+        
         return cell
     }
     // MARK: - 위에서 유동적으로 셀 높이를 지정하여서 해결

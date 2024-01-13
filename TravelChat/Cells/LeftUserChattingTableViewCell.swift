@@ -6,6 +6,7 @@ class LeftUserChattingTableViewCell: UITableViewCell {
     @IBOutlet var profileNameLabel: UILabel!
     @IBOutlet var ProfileMessageLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var chattingLeftView: UIView!
     
     
     override func awakeFromNib() {

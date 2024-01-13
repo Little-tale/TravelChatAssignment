@@ -62,6 +62,7 @@ enum DesignLabel {
     case ProfileName
     case ProfileMessage
     case date
+    case chatRoomMessageLeft
     
     func setting(UILabel uil: UILabel) {
         switch self{
@@ -73,6 +74,25 @@ enum DesignLabel {
         case .date :
             uil.textColor = .systemGray3
             uil.font = .systemFont(ofSize: 12)
+        case .chatRoomMessageLeft :
+            uil.font = .systemFont(ofSize: 14)
+            uil.textColor = .black
+            uil.textAlignment = .left
+            // uil.layer.borderWidth = 0.4
+            // uil.layer.cornerRadius = 12
+        }
+    }
+}
+enum DesignBackground {
+    case leftChat
+    
+    func setting(UIView uiv: UIView){
+        switch self {
+        case .leftChat:
+            uiv.backgroundColor = .white
+            uiv.layer.borderWidth = 0.8
+            uiv.layer.cornerRadius = 12
+            
         }
     }
 }

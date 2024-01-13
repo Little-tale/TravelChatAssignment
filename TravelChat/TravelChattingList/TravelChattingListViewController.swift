@@ -46,8 +46,9 @@ class TravelChattingListViewController: UIViewController {
         // 차라리 ChatRoom을 넘겨준다면?
         storyBoardView.userName = mockChatList[indexPath.row].chatroomName
         
+        storyBoardView.chatRoom = mockChatList[indexPath.row]
         
-        
+        storyBoardView.chat = mockChatList[indexPath.row].chatList
         // 푸시 연결
         navigationController?.pushViewController(storyBoardView, animated: true)
         
