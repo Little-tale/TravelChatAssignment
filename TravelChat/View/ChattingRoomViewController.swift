@@ -18,6 +18,7 @@
 import UIKit
 
 let ChattingRoomXib = UINib(nibName: "LeftUserChattingTableViewCell", bundle: nil)
+let ChattingRightXib = UINib(nibName: "RightUserChattingTableViewCell", bundle: nil)
 
 class ChattingRoomViewController: UIViewController {
     @IBOutlet var chattingRoomTabelView: UITableView!
@@ -39,10 +40,14 @@ class ChattingRoomViewController: UIViewController {
         navigationItem.leftBarButtonItem = backButton
         
         // 레지스터 좀 그만 쳐 까먹자
-        chattingRoomTabelView.register(ChattingRoomXib, forCellReuseIdentifier: "LeftUserChattingTableViewCell")
+        chattingRoomTabelView.register(ChattingRoomXib, forCellReuseIdentifier: UserCell.left.getIdnty )
+        
+        chattingRoomTabelView.register(ChattingRightXib, forCellReuseIdentifier: UserCell.right.getIdnty)
         
         chattingRoomTabelView.dataSource = self
         chattingRoomTabelView.delegate = self
+        
+        
         
         
         // 셀 레이아웃 잘 잡고 셀 높이 유동적
@@ -68,35 +73,53 @@ extension ChattingRoomViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LeftUserChattingTableViewCell", for: indexPath) as! LeftUserChattingTableViewCell
-                
-        // cell.profileNameLabel.text = userName
-        cell.profileNameLabel.text = chatRoom?.chatList[indexPath.row].user.rawValue
         
-        cell.ProfileMessageLabel.text = chatRoom?.chatList[indexPath.row].message
-        
-        
-        // MARK: - 이미지 넣기
-        guard let chatListOf = chatRoom?.chatList[indexPath.row] else {
-            return cell
+        // 이제 유저에 따라 leftCell or RightCell 을 구분져야지
+        // 받아온것으로 할까 고민했는데
+        guard let chat = chatRoom?.chatList[indexPath.row] else {
+            return UITableViewCell()
         }
         
-        let miniProfileImage = chatListOf.user.profileImage
+        if chat.user != User.user{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LeftUserChattingTableViewCell", for: indexPath) as! LeftUserChattingTableViewCell
+            // cell.profileNameLabel.text = userName
+            cell.profileNameLabel.text = chatRoom?.chatList[indexPath.row].user.rawValue
+            
+            cell.ProfileMessageLabel.text = chatRoom?.chatList[indexPath.row].message
+            
+            
+            // MARK: - 이미지 넣기
+            guard let chatListOf = chatRoom?.chatList[indexPath.row] else {
+                return cell
+            }
+            
+            let miniProfileImage = chatListOf.user.profileImage
+            
+            cell.ProfileMiniImageView.image = UIImage(named: miniProfileImage)
+            
+            
+            cell.dateLabel.text = chatListOf.getTime
+            DesignLabel.date.setting(UILabel: cell.dateLabel)
+            DesignLabel.chatRoomMessageLeft.setting(UILabel: cell.ProfileMessageLabel)
+            DesignBackground.leftChat.setting(UIView: cell.chattingLeftView)
+            
+            return cell
+            
+        }else {
+            let rightCell = tableView.dequeueReusableCell(withIdentifier: "RightUserChattingTableViewCell", for: indexPath) as! RightUserChattingTableViewCell
+            guard let chatListOf = chatRoom?.chatList[indexPath.row] else {
+                return UITableViewCell()
+            }
+            
+            rightCell.righMessageLabel.text = chat.message
+            rightCell.rightDateLabel.text = chatListOf.getTime
+            
+            DesignBackground.rigthChat.setting(UIView: rightCell.rightBackgroundView)
+            DesignLabel.rightChatMessage.setting(UILabel: rightCell.righMessageLabel)
+            DesignLabel.date.setting(UILabel: rightCell.rightDateLabel)
         
-        cell.ProfileMiniImageView.image = UIImage(named: miniProfileImage)
-        
-        
-        cell.dateLabel.text = chatListOf.getTime
-        
-        DesignLabel.date.setting(UILabel: cell.dateLabel)
-        
-        DesignLabel.chatRoomMessageLeft.setting(UILabel: cell.ProfileMessageLabel)
-        
-        DesignBackground.leftChat.setting(UIView: cell.chattingLeftView)
-        
-        
-        
-        return cell
+            return rightCell
+        }
     }
     // MARK: - 위에서 유동적으로 셀 높이를 지정하여서 해결
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

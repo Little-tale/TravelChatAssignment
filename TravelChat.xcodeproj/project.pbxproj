@@ -23,6 +23,8 @@
 		7BDD67782B51886D0044341D /* LeftUserChattingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDD67762B51886D0044341D /* LeftUserChattingTableViewCell.swift */; };
 		7BDD67792B51886D0044341D /* LeftUserChattingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BDD67772B51886D0044341D /* LeftUserChattingTableViewCell.xib */; };
 		7BDD677B2B5188D20044341D /* ChattingRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDD677A2B5188D20044341D /* ChattingRoomViewController.swift */; };
+		7BDD677E2B523CD30044341D /* RightUserChattingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDD677C2B523CD30044341D /* RightUserChattingTableViewCell.swift */; };
+		7BDD677F2B523CD30044341D /* RightUserChattingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BDD677D2B523CD30044341D /* RightUserChattingTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		7BDD67762B51886D0044341D /* LeftUserChattingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftUserChattingTableViewCell.swift; sourceTree = "<group>"; };
 		7BDD67772B51886D0044341D /* LeftUserChattingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftUserChattingTableViewCell.xib; sourceTree = "<group>"; };
 		7BDD677A2B5188D20044341D /* ChattingRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingRoomViewController.swift; sourceTree = "<group>"; };
+		7BDD677C2B523CD30044341D /* RightUserChattingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightUserChattingTableViewCell.swift; sourceTree = "<group>"; };
+		7BDD677D2B523CD30044341D /* RightUserChattingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightUserChattingTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 				7BDD67662B5134DF0044341D /* TravelChattingListTableViewCell.xib */,
 				7BDD67762B51886D0044341D /* LeftUserChattingTableViewCell.swift */,
 				7BDD67772B51886D0044341D /* LeftUserChattingTableViewCell.xib */,
+				7BDD677C2B523CD30044341D /* RightUserChattingTableViewCell.swift */,
+				7BDD677D2B523CD30044341D /* RightUserChattingTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -210,6 +216,7 @@
 			files = (
 				7BDD67542B512EA40044341D /* LaunchScreen.storyboard in Resources */,
 				7BDD67512B512EA40044341D /* Assets.xcassets in Resources */,
+				7BDD677F2B523CD30044341D /* RightUserChattingTableViewCell.xib in Resources */,
 				7BDD674F2B512EA20044341D /* Main.storyboard in Resources */,
 				7BDD67792B51886D0044341D /* LeftUserChattingTableViewCell.xib in Resources */,
 				7BDD67682B5134DF0044341D /* TravelChattingListTableViewCell.xib in Resources */,
@@ -231,6 +238,7 @@
 				7BDD675E2B512FB80044341D /* ChattingData.swift in Sources */,
 				7BDD67482B512EA20044341D /* AppDelegate.swift in Sources */,
 				7BDD67782B51886D0044341D /* LeftUserChattingTableViewCell.swift in Sources */,
+				7BDD677E2B523CD30044341D /* RightUserChattingTableViewCell.swift in Sources */,
 				7BDD674A2B512EA20044341D /* SceneDelegate.swift in Sources */,
 				7BDD67722B5166420044341D /* TravelTalkDesign.swift in Sources */,
 			);

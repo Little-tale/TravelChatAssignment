@@ -17,6 +17,30 @@ enum DesignForRow {
     }
 }
 
+enum UserCell {
+    case left
+    case right
+    
+    var getIdnty: String {
+        switch self {
+        case .left :
+            return "LeftUserChattingTableViewCell"
+        case .right :
+            return "RightUserChattingTableViewCell"
+        }
+    }
+    
+    func desighCell() {
+        switch self{
+        case .left:
+            print("asd")
+        case .right:
+            print("asdk")
+        }
+    }
+}
+
+
 enum DesignImage {
     case Profile
     // Type 'DesignImage.Type' has no member 'Profile'
@@ -63,6 +87,7 @@ enum DesignLabel {
     case ProfileMessage
     case date
     case chatRoomMessageLeft
+    case rightChatMessage
     
     func setting(UILabel uil: UILabel) {
         switch self{
@@ -80,11 +105,15 @@ enum DesignLabel {
             uil.textAlignment = .left
             // uil.layer.borderWidth = 0.4
             // uil.layer.cornerRadius = 12
+        case .rightChatMessage :
+            uil.font = .systemFont(ofSize: 14)
+            uil.textColor = .black
         }
     }
 }
 enum DesignBackground {
     case leftChat
+    case rigthChat
     
     func setting(UIView uiv: UIView){
         switch self {
@@ -92,6 +121,13 @@ enum DesignBackground {
             uiv.backgroundColor = .white
             uiv.layer.borderWidth = 0.8
             uiv.layer.cornerRadius = 12
+            
+        case .rigthChat :
+            uiv.backgroundColor = .systemGray5
+            uiv.layer.borderWidth = 0.5
+            uiv.clipsToBounds = true
+            uiv.layer.cornerRadius = 12
+        
             
         }
     }
@@ -106,6 +142,8 @@ enum DesignButton {
         uib.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
     }
 }
+
+
 
 
 
