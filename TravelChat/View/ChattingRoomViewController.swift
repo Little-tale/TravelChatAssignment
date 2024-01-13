@@ -49,6 +49,11 @@ class ChattingRoomViewController: UIViewController {
         chattingRoomTabelView.estimatedRowHeight = 100
         chattingRoomTabelView.rowHeight = UITableView.automaticDimension
         
+        
+        // 방 이름 즉 유저 이름
+        navigationItem.title = chatRoom?.chatroomName
+       
+        
     }
     // 뒤로 안가지는 문제 발생 -> 해결 답은 target을 nil로 했었음
     // 뒤로가려면 누르셨던분을 지정해야 그분께 돌아가는데
@@ -90,15 +95,16 @@ extension ChattingRoomViewController: UITableViewDelegate, UITableViewDataSource
         DesignBackground.leftChat.setting(UIView: cell.chattingLeftView)
         
         
+        
         return cell
     }
     // MARK: - 위에서 유동적으로 셀 높이를 지정하여서 해결
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //    }
     
-    func getCellHeight(_ vc: LeftUserChattingTableViewCell) -> CGFloat{
-        return vc.ProfileMessageLabel.frame.height + 30
-    }
+//    func getCellHeight(_ vc: LeftUserChattingTableViewCell) -> CGFloat{
+//        return vc.ProfileMessageLabel.frame.height + 30
+//    }
 }
 
 
