@@ -11,6 +11,11 @@ import Kingfisher
 let chattingListXib = UINib(nibName: NIBName.ChattingListXib.rawValue, bundle: nil)
 var everyone = User.allCases
 var chatListFilter: [ChatRoom] = []
+var testChat : [Chat] = []
+var testList: [String] = []
+var testText = ""
+var testFilter: [String] = []
+
 
 class TravelChattingListViewController: UIViewController {
     @IBOutlet var chattingListTabelView: UITableView!
@@ -20,6 +25,11 @@ class TravelChattingListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        chatListFilter = mockChatList
+        for item in chatListFilter{
+            testList.append(item.chatroomName)
+        }
+        print("TestList : ",testList)
         
         chattingListTabelView.register(chattingListXib, forCellReuseIdentifier: Identifier.ChattingListCell.list.rawValue)
         
@@ -57,6 +67,7 @@ class TravelChattingListViewController: UIViewController {
         
     }
 
+    
 }
 
 extension TravelChattingListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -73,8 +84,9 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.ChattingListCell.list.rawValue, for: indexPath) as! TravelChattingListTableViewCell
-    
         
         //@@@/ 하도 반복되서 따로 가져옴
         let chatindexRow = mockChatList[indexPath.row]
@@ -114,9 +126,29 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
 }
 extension TravelChattingListViewController: UISearchBarDelegate{
 
-    
-    func searchBarClicked() {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        testText = searchText
+        print("인식되는 : ", testText)
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         
+        
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("검색버튼 클리")
+        findUserName()
+        view.endEditing(true)
+    }
+    
+}
+
+extension TravelChattingListViewController {
+    func findUserName(){
+//        if testList.contains(testText) {
+//            print("걸러짐")
+//        }
+        testFilter = testList.filter{$0 == testText}
+        print(testFilter)
     }
 }
 

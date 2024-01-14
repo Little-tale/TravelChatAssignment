@@ -27,7 +27,7 @@ class ChattingRoomViewController: UIViewController {
         let backButton = DesignBarButton.backButton.setting(target: self ,objcFunc: #selector(returnAction))
         navigationItem.leftBarButtonItem = backButton
         
-        // 레지스터 좀 그만 쳐 까먹자
+        // 레지스터 좀 그만 까먹자
         chattingRoomTabelView.register(ChattingRoomXib, forCellReuseIdentifier: UserCell.left.getIdnty )
         
         chattingRoomTabelView.register(ChattingRightXib, forCellReuseIdentifier: UserCell.right.getIdnty)
@@ -36,17 +36,13 @@ class ChattingRoomViewController: UIViewController {
         chattingRoomTabelView.delegate = self
         searchTextView.delegate = self
         
-        
         // 셀 레이아웃 잘 잡고 셀 높이 유동적
         chattingRoomTabelView.estimatedRowHeight = 100
         chattingRoomTabelView.rowHeight = UITableView.automaticDimension
         
-        
-        
         // 방 이름 즉 유저 이름
         navigationItem.title = chatRoom?.chatroomName
        
-        
         chattingRoomTabelView.separatorStyle = .none
         chattingRoomTabelView.allowsSelection = false
         
