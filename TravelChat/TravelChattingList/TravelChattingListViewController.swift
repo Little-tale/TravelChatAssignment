@@ -135,7 +135,7 @@ extension TravelChattingListViewController: UISearchBarDelegate{
         print("인식되는 : ", getSearchText)
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        
+        chattingListTabelView.reloadData()
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("검색버튼 클리")
@@ -151,16 +151,20 @@ extension TravelChattingListViewController: UISearchBarDelegate{
 extension TravelChattingListViewController {
     
     func findUserRoom() {
-           let filters = getSearchText  // findUserName()
+        let filters = getSearchText  // findUserName()
         var filteredChatRooms: [ChatRoom] = []
         print(filters)
+        // 검색 글자가 안비어있다면
            if !getSearchText.isEmpty {
-               // 모든 채팅방 가보고
-               
+                // 모든 채팅방에서
                for chatRooms in mockChatList{
+                   // 모든 채팅을
                    for chats in chatRooms.chatList {
+                       // 채팅의 유저들중
+                       // 검색 글자가 포함 되어 있다면
                        if chats.user.rawValue == getSearchText{
                            print(chats)
+                           // 필터 방에 업데이트
                            filteredChatRooms.append(chatRooms)
                            break
                        }
@@ -169,6 +173,7 @@ extension TravelChattingListViewController {
                
            } else {
                // 검색어가 비어있으면 모든 채팅방을 표시
+               // 검색어가 비어있다면 모두 제거
                filteredChatRooms = mockChatList
                chatListFilter = mockChatList
            }
