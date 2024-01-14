@@ -10,7 +10,7 @@ import Kingfisher
 
 let chattingListXib = UINib(nibName: NIBName.ChattingListXib.rawValue, bundle: nil)
 var everyone = User.allCases
-var chatListFilter: [ChatRoom] = []
+var chatListFilter: [ChatRoom] = mockChatList
 var testChat : [Chat] = []
 var testList: [[String]] = []
 var testText = ""
@@ -82,7 +82,7 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
         print(mockChatList.count)
         print(testList.count)
         
-        return testList.count != 0 ? testList.count :  mockChatList.count
+        return chatListFilter.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,13 +92,8 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.ChattingListCell.list.rawValue, for: indexPath) as! TravelChattingListTableViewCell
         
         //@@@/ 하도 반복되서 따로 가져옴
-        let chatindexRow = mockChatList[indexPath.row]
+        let chatindexRow = chatListFilter[indexPath.row]
         
-        let testF = chatindexRow.chatList
-        for item in testF{
-            testSet.insert(item.user.rawValue)
-        }
-        print(testSet)
         // MARK: - 목쳇리스트 채팅방 이름 넣기
         // print(mockChatList[indexPath.row].chatroomName)
         cell.ProfileMainLabel.text = chatindexRow.chatroomName
@@ -150,7 +145,6 @@ extension TravelChattingListViewController: UISearchBarDelegate{
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("검색버튼 클리")
-        let filterRoomPerson = findUserName()
         // print(filterRoomPerson)
         
         findUserRoom()
@@ -161,59 +155,36 @@ extension TravelChattingListViewController: UISearchBarDelegate{
 }
 
 extension TravelChattingListViewController {
-    func findUserName() -> [[String]] {
-//        if testList.contains(testText) {
-//            print("걸러짐")
-//        }
-//        testFilter = testList.filter{$0 == testText}
-//        print(testFilter)
-//        
-        // 단톡방에도 휴님이 있다면 그때는 안걸러짐
-        
-        if !testText.isEmpty  {
-            // print(testList.filter{ $0.contains(testText)})
-            let filter = testList.filter{$0.contains(testText)}
-            // Hue 일때, [["Bran", "Hue", "Den", "Jack"], ["user", "Hue"]]
-            return filter
-        } else{
-            return testList
-        }
-    }
     
     func findUserRoom() {
-           let filters = findUserName()
+           let filters = testText  // findUserName()
         var filteredChatRooms: [ChatRoom] = []
-
+        print(filters)
            if !testText.isEmpty {
                // 모든 채팅방 가보고
-               for chatRooms in mockChatList {
-                   
-                   for userNames in filters {
-                       // print("필터링 된 ", userNames)
-                       for userName in userNames {
-                           // 방에서 꺼내와서
-                           // print("TestL", userName)
-                           if chatRooms.chatList.contains(where: {$0.user.rawValue == userName }){
-                               // print("필터링? ",chatRooms.chatroomName)
-                               filteredChatRooms.append(chatRooms)
-                               break
-                           }
+               
+               for chatRooms in mockChatList{
+                   for chats in chatRooms.chatList {
+                       if chats.user.rawValue == testText{
+                           print(chats)
+                           filteredChatRooms.append(chatRooms)
                            break
                        }
-                       break
                    }
                }
+               
            } else {
                // 검색어가 비어있으면 모든 채팅방을 표시
-               //filteredChatRooms = mockChatList
+               filteredChatRooms = mockChatList
+               chatListFilter = mockChatList
            }
         print(filteredChatRooms.count)
         for item in filteredChatRooms{
             print(item.chatroomName) // 왜 도봉 멘토방과 젝님이 나오는 거지 미쳐버리겠네
         }
            // 필터링된 결과를 chatListFilter에 할당하고 테이블 뷰를 업데이트
-           //chatListFilter = filteredChatRooms
-           //chattingListTabelView.reloadData()
+           chatListFilter = filteredChatRooms
+           chattingListTabelView.reloadData()
     }
     
 }
