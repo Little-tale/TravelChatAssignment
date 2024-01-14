@@ -11,6 +11,7 @@ class LeftUserChattingTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        design()
     
     }
 
@@ -19,4 +20,15 @@ class LeftUserChattingTableViewCell: UITableViewCell {
 
     }
     
+}
+
+
+
+// MARK: - 디자인 영역
+extension LeftUserChattingTableViewCell{
+    func design(){
+        DesignLabel.chatRoomMessageLeft.setting(UILabel: ProfileMessageLabel)
+        DesignBackground.leftChat.setting(UIView: chattingLeftView)
+        DesignLabel.date.setting(UILabel: dateLabel)
+    }
 }

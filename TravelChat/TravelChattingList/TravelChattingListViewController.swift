@@ -9,15 +9,14 @@ import UIKit
 import Kingfisher
 
 let chattingListXib = UINib(nibName: "TravelChattingListTableViewCell", bundle: nil)
-
-
+var everyone = User.allCases
+var chatListFilter: [ChatRoom] = []
 
 class TravelChattingListViewController: UIViewController {
     @IBOutlet var chattingListTabelView: UITableView!
-    @IBOutlet var backgroundView: UIView!
-    @IBOutlet var searchTextField: UITextField!
-    @IBOutlet var searchButton: UIButton!
+    @IBOutlet var searchBar: UISearchBar!
     
+    var searchTextAfter = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +25,8 @@ class TravelChattingListViewController: UIViewController {
         chattingListTabelView.delegate = self
         chattingListTabelView.dataSource = self
         
-        // MARK: - 설치바 디자인
-        designSearchBarView()
-        
+        searchBar.placeholder = "친구 이름을 검색해 보세요"
+        searchBar.delegate = self
         
     }
     
@@ -49,17 +47,15 @@ class TravelChattingListViewController: UIViewController {
         storyBoardView.chatRoom = mockChatList[indexPath.row]
         
         storyBoardView.chat = mockChatList[indexPath.row].chatList
+        // 특정행-> 효과 지워주세요
+        tableView.reloadRows(at: [indexPath], with: .fade  )
+        
         // 푸시 연결
         navigationController?.pushViewController(storyBoardView, animated: true)
         
         
     }
 
-    @IBAction func textFieldKeyboard(_ sender: UITextField) {
-        view.endEditing(true)
-    }
-    
-    
 }
 
 extension TravelChattingListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -70,13 +66,14 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
         // 구조체 내려보면, 뭔가 많이 구현되었다.
         // MARK: - 목쳇 리스트 채팅방 갯수 (배열갯수로 접근해봄)
         print(mockChatList.count)
+        
         return mockChatList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TravelChattingListTableViewCell", for: indexPath) as! TravelChattingListTableViewCell
         
-        // cell.ProfileMainLabel.text =
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TravelChattingListTableViewCell", for: indexPath) as! TravelChattingListTableViewCell
+    
         
         //@@@/ 하도 반복되서 따로 가져옴
         let chatindexRow = mockChatList[indexPath.row]
@@ -93,9 +90,6 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
         // MARK: - 마지막 채팅방 날짜 넣어주기
         cell.ProfileDateLabel.text = chatindexRow.chatList.last?.getDate
         
-        // cell.ProfileImageView.image =
-        // print("TT",User.allCases[indexPath.row].profileImage)
-        
         // MARK: - 이미지 넣어주기
         // 와 잠만... 아... 옵션은 일단 한개만 해보고 넘어가 보자
         // 잭님 부분에서 휴님 튀어나와서 놀래서 일단은 잭님으로 수정했다.
@@ -105,7 +99,6 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
         // MARK: - 이미지 디자인 -> 셀
         // 디자인은 셀에서 처리해 보자.
       
-        
         return cell
     }
     
@@ -115,28 +108,14 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
     }
     
     
-}
-
-
-// MARK: - 설치바 디자인 구현
-extension TravelChattingListViewController {
-    func designSearchBarView(){
-        DesignTextFild.search.setting(UITextField: searchTextField,backgroundView: backgroundView )
-        DesignButton.search.setting(UIButton: searchButton)
-    }
-}
-
-extension TravelChattingListViewController {
+    
     
 }
+extension TravelChattingListViewController: UISearchBarDelegate{
 
-
-
-
-
-
-
-
-
-
+    
+    func searchBarClicked() {
+        
+    }
+}
 

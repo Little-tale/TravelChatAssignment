@@ -138,12 +138,30 @@ enum DesignButton {
     case search
     
     func setting(UIButton uib: UIButton) {
-        uib.tintColor = .systemGray2
-        uib.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        switch self {
+        case .search:
+            uib.tintColor = .systemGray2
+            uib.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        }
     }
 }
 
-
+enum DesignBarButton{
+    case backButton
+    
+    func setting(target : Any? ,objcFunc: Selector ) -> UIBarButtonItem {
+        switch self {
+        case .backButton :
+            let leftImage = UIImage(systemName: "chevron.left")
+            let blackImage = leftImage?.withTintColor(.black, renderingMode: .alwaysOriginal)
+            // 타겟을 self로 하면 뒤로 안가진다.
+            // 열거형이 사용을 한다가 되버려서 이다.
+            // 타겟을 매게 변수로 받아야 겠다.
+            let blackBarButton = UIBarButtonItem(image: blackImage, style: .plain, target: target, action: objcFunc )
+            return blackBarButton
+        }
+    }
+}
 
 
 

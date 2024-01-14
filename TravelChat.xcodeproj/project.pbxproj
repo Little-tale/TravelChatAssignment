@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BA7859E2B526E19003DCF59 /* TravelFourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7859C2B526E19003DCF59 /* TravelFourTableViewCell.swift */; };
+		7BA7859F2B526E19003DCF59 /* TravelFourTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA7859D2B526E19003DCF59 /* TravelFourTableViewCell.xib */; };
+		7BA785E42B53C104003DCF59 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA785E32B53C104003DCF59 /* Identifier.swift */; };
+		7BA785E62B53C32F003DCF59 /* NIBName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA785E52B53C32F003DCF59 /* NIBName.swift */; };
 		7BDD67482B512EA20044341D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDD67472B512EA20044341D /* AppDelegate.swift */; };
 		7BDD674A2B512EA20044341D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDD67492B512EA20044341D /* SceneDelegate.swift */; };
 		7BDD674C2B512EA20044341D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDD674B2B512EA20044341D /* ViewController.swift */; };
@@ -25,9 +29,14 @@
 		7BDD677B2B5188D20044341D /* ChattingRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDD677A2B5188D20044341D /* ChattingRoomViewController.swift */; };
 		7BDD677E2B523CD30044341D /* RightUserChattingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDD677C2B523CD30044341D /* RightUserChattingTableViewCell.swift */; };
 		7BDD677F2B523CD30044341D /* RightUserChattingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BDD677D2B523CD30044341D /* RightUserChattingTableViewCell.xib */; };
+		7BDD67822B5267930044341D /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7BDD67812B5267930044341D /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7BA7859C2B526E19003DCF59 /* TravelFourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelFourTableViewCell.swift; sourceTree = "<group>"; };
+		7BA7859D2B526E19003DCF59 /* TravelFourTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelFourTableViewCell.xib; sourceTree = "<group>"; };
+		7BA785E32B53C104003DCF59 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
+		7BA785E52B53C32F003DCF59 /* NIBName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIBName.swift; sourceTree = "<group>"; };
 		7BDD67442B512EA20044341D /* TravelChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDD67472B512EA20044341D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BDD67492B512EA20044341D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,12 +64,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BDD676F2B5140700044341D /* Kingfisher in Frameworks */,
+				7BDD67822B5267930044341D /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7BA785E22B53C0EE003DCF59 /* Identifier_nibName */ = {
+			isa = PBXGroup;
+			children = (
+				7BA785E32B53C104003DCF59 /* Identifier.swift */,
+				7BA785E52B53C32F003DCF59 /* NIBName.swift */,
+			);
+			path = Identifier_nibName;
+			sourceTree = "<group>";
+		};
 		7BDD673B2B512EA10044341D = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +99,7 @@
 		7BDD67462B512EA20044341D /* TravelChat */ = {
 			isa = PBXGroup;
 			children = (
+				7BA785E22B53C0EE003DCF59 /* Identifier_nibName */,
 				7BDD67732B517E150044341D /* View */,
 				7BDD67702B5162790044341D /* designModel */,
 				7BDD67622B5134650044341D /* Cells */,
@@ -129,6 +149,8 @@
 				7BDD67772B51886D0044341D /* LeftUserChattingTableViewCell.xib */,
 				7BDD677C2B523CD30044341D /* RightUserChattingTableViewCell.swift */,
 				7BDD677D2B523CD30044341D /* RightUserChattingTableViewCell.xib */,
+				7BA7859C2B526E19003DCF59 /* TravelFourTableViewCell.swift */,
+				7BA7859D2B526E19003DCF59 /* TravelFourTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -168,6 +190,7 @@
 			name = TravelChat;
 			packageProductDependencies = (
 				7BDD676E2B5140700044341D /* Kingfisher */,
+				7BDD67812B5267930044341D /* IQKeyboardManagerSwift */,
 			);
 			productName = TravelChat;
 			productReference = 7BDD67442B512EA20044341D /* TravelChat.app */;
@@ -199,6 +222,7 @@
 			mainGroup = 7BDD673B2B512EA10044341D;
 			packageReferences = (
 				7BDD676D2B5140700044341D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				7BDD67802B5267930044341D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 7BDD67452B512EA20044341D /* Products */;
 			projectDirPath = "";
@@ -215,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BDD67542B512EA40044341D /* LaunchScreen.storyboard in Resources */,
+				7BA7859F2B526E19003DCF59 /* TravelFourTableViewCell.xib in Resources */,
 				7BDD67512B512EA40044341D /* Assets.xcassets in Resources */,
 				7BDD677F2B523CD30044341D /* RightUserChattingTableViewCell.xib in Resources */,
 				7BDD674F2B512EA20044341D /* Main.storyboard in Resources */,
@@ -231,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BA7859E2B526E19003DCF59 /* TravelFourTableViewCell.swift in Sources */,
 				7BDD67672B5134DF0044341D /* TravelChattingListTableViewCell.swift in Sources */,
 				7BDD674C2B512EA20044341D /* ViewController.swift in Sources */,
 				7BDD676C2B513C530044341D /* TravelChattingListViewController.swift in Sources */,
@@ -240,6 +266,8 @@
 				7BDD67782B51886D0044341D /* LeftUserChattingTableViewCell.swift in Sources */,
 				7BDD677E2B523CD30044341D /* RightUserChattingTableViewCell.swift in Sources */,
 				7BDD674A2B512EA20044341D /* SceneDelegate.swift in Sources */,
+				7BA785E62B53C32F003DCF59 /* NIBName.swift in Sources */,
+				7BA785E42B53C104003DCF59 /* Identifier.swift in Sources */,
 				7BDD67722B5166420044341D /* TravelTalkDesign.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +507,14 @@
 				minimumVersion = 7.10.2;
 			};
 		};
+		7BDD67802B5267930044341D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -486,6 +522,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7BDD676D2B5140700044341D /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		7BDD67812B5267930044341D /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7BDD67802B5267930044341D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

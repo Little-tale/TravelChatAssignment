@@ -14,7 +14,7 @@ class RightUserChattingTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        design()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,4 +23,14 @@ class RightUserChattingTableViewCell: UITableViewCell {
         
     }
     
+}
+
+// MARK:  디자인 영역 ->
+
+extension RightUserChattingTableViewCell{
+    func design() {
+        DesignBackground.rigthChat.setting(UIView: rightBackgroundView)
+        DesignLabel.rightChatMessage.setting(UILabel: righMessageLabel)
+        DesignLabel.date.setting(UILabel: rightDateLabel)
+    }
 }

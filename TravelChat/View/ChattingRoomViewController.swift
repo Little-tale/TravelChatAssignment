@@ -6,7 +6,7 @@
  @IBOutlet var chattingRoomTabelView: UITableView!
  
  // 3.****** 레지스터 연결 -> 이거 너무 까먹는다
- // 레지스터 좀 그만 쳐 까먹자
+ // 레지스터 좀 그만 까먹자 ^^
  chattingRoomTabelView.register(ChattingRoomXib, forCellReuseIdentifier: "LeftUserChattingTableViewCell")
  
  // 4. 셀 생성 as!
@@ -15,10 +15,12 @@
  */
 
 
+
+
 import UIKit
 
-let ChattingRoomXib = UINib(nibName: "LeftUserChattingTableViewCell", bundle: nil)
-let ChattingRightXib = UINib(nibName: "RightUserChattingTableViewCell", bundle: nil)
+let ChattingRoomXib = UINib(nibName: NIBName.ChattingLeftXib.rawValue, bundle: nil)
+let ChattingRightXib = UINib(nibName: NIBName.ChattingRightXib.rawValue, bundle: nil)
 
 class ChattingRoomViewController: UIViewController {
     @IBOutlet var chattingRoomTabelView: UITableView!
@@ -28,15 +30,8 @@ class ChattingRoomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let leftImage = UIImage(systemName: "chevron.left")
-        // 색안바뀜 어케 바꾸지
-        // -> 해결 렌더링 모드를 항상 오리지널로 줘야함
-        // UIKit가 정한 템플릿 모드 로 지정되는데
-        // 그걸 바꾸려면 이레야함
-        let blackButton = leftImage?.withTintColor(.black, renderingMode: .alwaysOriginal)
-        
-        // 타겟 셀프로 안하면 뒤로 안가짐
-        let backButton = UIBarButtonItem(image: blackButton, style: .plain, target: self, action: #selector(returnAction))
+            
+        let backButton = DesignBarButton.backButton.setting(target: self ,objcFunc: #selector(returnAction))
         navigationItem.leftBarButtonItem = backButton
         
         // 레지스터 좀 그만 쳐 까먹자
@@ -46,8 +41,6 @@ class ChattingRoomViewController: UIViewController {
         
         chattingRoomTabelView.dataSource = self
         chattingRoomTabelView.delegate = self
-        
-        
         
         
         // 셀 레이아웃 잘 잡고 셀 높이 유동적
@@ -81,7 +74,7 @@ extension ChattingRoomViewController: UITableViewDelegate, UITableViewDataSource
         }
         
         if chat.user != User.user{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LeftUserChattingTableViewCell", for: indexPath) as! LeftUserChattingTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.ChattingCell.left.rawValue , for: indexPath) as! LeftUserChattingTableViewCell
             // cell.profileNameLabel.text = userName
             cell.profileNameLabel.text = chatRoom?.chatList[indexPath.row].user.rawValue
             
@@ -92,21 +85,14 @@ extension ChattingRoomViewController: UITableViewDelegate, UITableViewDataSource
             guard let chatListOf = chatRoom?.chatList[indexPath.row] else {
                 return cell
             }
-            
             let miniProfileImage = chatListOf.user.profileImage
-            
             cell.ProfileMiniImageView.image = UIImage(named: miniProfileImage)
             
-            
             cell.dateLabel.text = chatListOf.getTime
-            DesignLabel.date.setting(UILabel: cell.dateLabel)
-            DesignLabel.chatRoomMessageLeft.setting(UILabel: cell.ProfileMessageLabel)
-            DesignBackground.leftChat.setting(UIView: cell.chattingLeftView)
-            
             return cell
             
         }else {
-            let rightCell = tableView.dequeueReusableCell(withIdentifier: "RightUserChattingTableViewCell", for: indexPath) as! RightUserChattingTableViewCell
+            let rightCell = tableView.dequeueReusableCell(withIdentifier: Identifier.ChattingCell.right.rawValue, for: indexPath) as! RightUserChattingTableViewCell
             guard let chatListOf = chatRoom?.chatList[indexPath.row] else {
                 return UITableViewCell()
             }
@@ -114,20 +100,12 @@ extension ChattingRoomViewController: UITableViewDelegate, UITableViewDataSource
             rightCell.righMessageLabel.text = chat.message
             rightCell.rightDateLabel.text = chatListOf.getTime
             
-            DesignBackground.rigthChat.setting(UIView: rightCell.rightBackgroundView)
-            DesignLabel.rightChatMessage.setting(UILabel: rightCell.righMessageLabel)
-            DesignLabel.date.setting(UILabel: rightCell.rightDateLabel)
-        
             return rightCell
         }
+        
+ 
     }
-    // MARK: - 위에서 유동적으로 셀 높이를 지정하여서 해결
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//    }
     
-//    func getCellHeight(_ vc: LeftUserChattingTableViewCell) -> CGFloat{
-//        return vc.ProfileMessageLabel.frame.height + 30
-//    }
 }
 
 
