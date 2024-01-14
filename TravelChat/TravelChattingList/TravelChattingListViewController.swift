@@ -12,24 +12,26 @@ let chattingListXib = UINib(nibName: NIBName.ChattingListXib.rawValue, bundle: n
 var everyone = User.allCases
 var chatListFilter: [ChatRoom] = []
 var testChat : [Chat] = []
-var testList: [String] = []
+var testList: [[String]] = []
 var testText = ""
-var testFilter: [String] = []
+var testFilter: [[String]] = []
+
+// 집합으로 방안에 유저들 모으고 걸러
+var testSet: Set<String> = []
 
 
 class TravelChattingListViewController: UIViewController {
     @IBOutlet var chattingListTabelView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
-    var searchTextAfter = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        chatListFilter = mockChatList
-        for item in chatListFilter{
-            testList.append(item.chatroomName)
-        }
-        print("TestList : ",testList)
+//        chatListFilter = mockChatList
+//        for item in chatListFilter{
+//            print(item.chatList)
+//        }
+//        print("TestList : ",testList)
+        
         
         chattingListTabelView.register(chattingListXib, forCellReuseIdentifier: Identifier.ChattingListCell.list.rawValue)
         
@@ -78,8 +80,9 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
         // 구조체 내려보면, 뭔가 많이 구현되었다.
         // MARK: - 목쳇 리스트 채팅방 갯수 (배열갯수로 접근해봄)
         print(mockChatList.count)
+        print(testList.count)
         
-        return mockChatList.count
+        return testList.count != 0 ? testList.count :  mockChatList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,6 +94,11 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
         //@@@/ 하도 반복되서 따로 가져옴
         let chatindexRow = mockChatList[indexPath.row]
         
+        let testF = chatindexRow.chatList
+        for item in testF{
+            testSet.insert(item.user.rawValue)
+        }
+        print(testSet)
         // MARK: - 목쳇리스트 채팅방 이름 넣기
         // print(mockChatList[indexPath.row].chatroomName)
         cell.ProfileMainLabel.text = chatindexRow.chatroomName
@@ -111,13 +119,20 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
         
         // MARK: - 이미지 디자인 -> 셀
         // 디자인은 셀에서 처리해 보자.
-      
+        
+        testList.append(Array(testSet))
+        
+        testSet.removeAll()
+        
+       
+        // print("공간이 만들어짐? -> ",testList)
+        // print(testList.first)
         return cell
     }
     
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return DesignForRow.TalkRoom.setting
+        return  DesignForRow.TalkRoom.setting
     }
     
     
@@ -132,23 +147,45 @@ extension TravelChattingListViewController: UISearchBarDelegate{
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         
-        
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("검색버튼 클리")
-        findUserName()
+        let filterRoomPerson = findUserName()
+        // print(filterRoomPerson)
+        
+        findUserRoom()
         view.endEditing(true)
     }
+    
     
 }
 
 extension TravelChattingListViewController {
-    func findUserName(){
+    func findUserName() -> [[String]] {
 //        if testList.contains(testText) {
 //            print("걸러짐")
 //        }
-        testFilter = testList.filter{$0 == testText}
-        print(testFilter)
+//        testFilter = testList.filter{$0 == testText}
+//        print(testFilter)
+//        
+        // 단톡방에도 휴님이 있다면 그때는 안걸러짐
+        
+        if !testText.isEmpty  {
+            // print(testList.filter{ $0.contains(testText)})
+            let filter = testList.filter{$0.contains(testText)}
+            // Hue 일때, [["Bran", "Hue", "Den", "Jack"], ["user", "Hue"]]
+            return filter
+        } else{
+            return testList
+        }
     }
+    
+    func findUserRoom() {
+        let filter = findUserName()
+        if filter.isEmpty{
+            
+        }
+    }
+    
 }
 
