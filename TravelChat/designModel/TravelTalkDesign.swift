@@ -10,6 +10,9 @@ import UIKit
 enum leftORRight{
     
 }
+enum PlaceholderText: String {
+    case chattingRoom = "메세지를 입력해 주세요"
+}
 
 
 enum DesignForRow {
@@ -63,6 +66,19 @@ enum DesignImage {
         
     }
 }
+enum DesignTextView {
+    case messageBar
+    
+    func setting(UITextView uitv: UITextView){
+        switch self {
+        case .messageBar:
+            uitv.font = .systemFont(ofSize: 16)
+            uitv.textColor = .gray
+            uitv.textAlignment = .left
+            uitv.backgroundColor = .clear
+        }
+    }
+}
 
 enum DesignTextFild {
     case search
@@ -83,6 +99,7 @@ enum DesignTextFild {
             // 없는 케이스도 있어서 ? 로 수정
             uv?.backgroundColor = .systemGray6
             uv?.layer.cornerRadius = 9
+       
         }
         
     }
@@ -122,6 +139,7 @@ enum DesignLabel {
 enum DesignBackground {
     case leftChat
     case rigthChat
+    case messageView
     
     func setting(UIView uiv: UIView){
         switch self {
@@ -136,7 +154,10 @@ enum DesignBackground {
             uiv.clipsToBounds = true
             uiv.layer.cornerRadius = 12
         
-            
+        case .messageView:
+            uiv.backgroundColor = .systemGray6
+            uiv.clipsToBounds = true
+            uiv.layer.cornerRadius = 12
         }
     }
 }
@@ -144,12 +165,14 @@ enum DesignBackground {
 
 enum DesignButton {
     case search
-    
+    case send
     func setting(UIButton uib: UIButton) {
         switch self {
         case .search:
             uib.tintColor = .systemGray2
             uib.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        case .send :
+            uib.tintColor = .systemGray4
         }
     }
 }

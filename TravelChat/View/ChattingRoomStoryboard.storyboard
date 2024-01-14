@@ -88,6 +88,9 @@
                     </view>
                     <connections>
                         <outlet property="chattingRoomTabelView" destination="hCP-RX-02b" id="SDp-cF-gjZ"/>
+                        <outlet property="searchBarBackView" destination="4kD-K9-gSg" id="Rod-8E-jdZ"/>
+                        <outlet property="searchButton" destination="yXJ-ry-Rlv" id="3nb-O9-ZWL"/>
+                        <outlet property="searchTextView" destination="t0I-f5-AWH" id="S6Y-Rd-LbW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

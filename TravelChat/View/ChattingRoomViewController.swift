@@ -5,13 +5,25 @@ let ChattingRightXib = UINib(nibName: NIBName.ChattingRightXib.rawValue, bundle:
 
 class ChattingRoomViewController: UIViewController {
     @IBOutlet var chattingRoomTabelView: UITableView!
+    @IBOutlet var searchBarBackView: UIView!
+    @IBOutlet var searchTextView: UITextView!
+    @IBOutlet var searchButton: UIButton!
+    
+    var plaseHolder = ""
     var userName : String = ""
     var chatRoom : ChatRoom?
     var chat: [Chat?] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        designBar()
+        
+        if plaseHolder.isEmpty{
+            plaseHolder = PlaceholderText.chattingRoom.rawValue
+            searchTextView.text = plaseHolder
+        }
+       
+        
         let backButton = DesignBarButton.backButton.setting(target: self ,objcFunc: #selector(returnAction))
         navigationItem.leftBarButtonItem = backButton
         
@@ -22,6 +34,7 @@ class ChattingRoomViewController: UIViewController {
         
         chattingRoomTabelView.dataSource = self
         chattingRoomTabelView.delegate = self
+        searchTextView.delegate = self
         
         
         // 셀 레이아웃 잘 잡고 셀 높이 유동적
@@ -92,3 +105,29 @@ extension ChattingRoomViewController: UITableViewDelegate, UITableViewDataSource
 
 
 
+extension ChattingRoomViewController: UITextViewDelegate{
+    func designBar() {
+        DesignTextView.messageBar.setting(UITextView: searchTextView)
+        DesignBackground.messageView.setting(UIView: searchBarBackView)
+        DesignButton.send.setting(UIButton: searchButton)
+    }
+//    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+//        searchTextView.text = "테스트"
+//        textView.text = "테스트4"
+//        
+//        return true
+//    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            plaseHolder = PlaceholderText.chattingRoom.rawValue
+            textView.text = plaseHolder
+        }else {
+            plaseHolder = textView.text
+        }
+    }
+
+}
