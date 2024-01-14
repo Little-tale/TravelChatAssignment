@@ -7,12 +7,18 @@
 
 import Foundation
 
-enum Identifier{
+enum Identifier: String{
+    case chattingRoom = "ChattingRoomViewController"
+    
     enum ChattingCell: String{
         case left = "LeftUserChattingTableViewCell"
         case right = "RightUserChattingTableViewCell"
         
     }
+    enum ChattingListCell: String{
+        case list =  "TravelChattingListTableViewCell"
+    }
+
 }
 
 

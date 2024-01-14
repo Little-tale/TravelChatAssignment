@@ -1,22 +1,3 @@
-/*
- //1. xib 인스턴스 생성
- let ChattingRoomXib = UINib(nibName: "LeftUserChattingTableViewCell", bundle: nil)
- 
- // 2. 아웃렛 연결
- @IBOutlet var chattingRoomTabelView: UITableView!
- 
- // 3.****** 레지스터 연결 -> 이거 너무 까먹는다
- // 레지스터 좀 그만 까먹자 ^^
- chattingRoomTabelView.register(ChattingRoomXib, forCellReuseIdentifier: "LeftUserChattingTableViewCell")
- 
- // 4. 셀 생성 as!
- let cell = tableView.dequeueReusableCell(withIdentifier: "LeftUserChattingTableViewCell", for: indexPath) as! LeftUserChattingTableViewCell
- 
- */
-
-
-
-
 import UIKit
 
 let ChattingRoomXib = UINib(nibName: NIBName.ChattingLeftXib.rawValue, bundle: nil)
@@ -48,9 +29,13 @@ class ChattingRoomViewController: UIViewController {
         chattingRoomTabelView.rowHeight = UITableView.automaticDimension
         
         
+        
         // 방 이름 즉 유저 이름
         navigationItem.title = chatRoom?.chatroomName
        
+        
+        chattingRoomTabelView.separatorStyle = .none
+        chattingRoomTabelView.allowsSelection = false
         
     }
     // 뒤로 안가지는 문제 발생 -> 해결 답은 target을 nil로 했었음
@@ -80,7 +65,6 @@ extension ChattingRoomViewController: UITableViewDelegate, UITableViewDataSource
             
             cell.ProfileMessageLabel.text = chatRoom?.chatList[indexPath.row].message
             
-            
             // MARK: - 이미지 넣기
             guard let chatListOf = chatRoom?.chatList[indexPath.row] else {
                 return cell
@@ -89,6 +73,8 @@ extension ChattingRoomViewController: UITableViewDelegate, UITableViewDataSource
             cell.ProfileMiniImageView.image = UIImage(named: miniProfileImage)
             
             cell.dateLabel.text = chatListOf.getTime
+            
+            
             return cell
             
         }else {
@@ -105,7 +91,7 @@ extension ChattingRoomViewController: UITableViewDelegate, UITableViewDataSource
         
  
     }
-    
+
 }
 
 

@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-let chattingListXib = UINib(nibName: "TravelChattingListTableViewCell", bundle: nil)
+let chattingListXib = UINib(nibName: NIBName.ChattingListXib.rawValue, bundle: nil)
 var everyone = User.allCases
 var chatListFilter: [ChatRoom] = []
 
@@ -21,7 +21,8 @@ class TravelChattingListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        chattingListTabelView.register(chattingListXib, forCellReuseIdentifier: "TravelChattingListTableViewCell")
+        chattingListTabelView.register(chattingListXib, forCellReuseIdentifier: Identifier.ChattingListCell.list.rawValue)
+        
         chattingListTabelView.delegate = self
         chattingListTabelView.dataSource = self
         
@@ -32,9 +33,9 @@ class TravelChattingListViewController: UIViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        // 스토리보드 찾기
-        let ChattiongRoomstoryBoard = UIStoryboard(name: "ChattingRoomStoryboard", bundle: nil)
+        let ChattiongRoomstoryBoard = UIStoryboard(name: storyBoardName.ChattingRoom.rawValue, bundle: nil)
         // 스토리 보드 안에 있는 뷰 찾기
-        let storyBoardView = ChattiongRoomstoryBoard.instantiateViewController(withIdentifier: "ChattingRoomViewController") as! ChattingRoomViewController
+        let storyBoardView = ChattiongRoomstoryBoard.instantiateViewController(withIdentifier: Identifier.chattingRoom.rawValue) as! ChattingRoomViewController
         
         // 해당 뷰컨 으로 형변환
         // 해당 스토리 보드에 받을 공간 만들고
@@ -72,7 +73,7 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TravelChattingListTableViewCell", for: indexPath) as! TravelChattingListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.ChattingListCell.list.rawValue, for: indexPath) as! TravelChattingListTableViewCell
     
         
         //@@@/ 하도 반복되서 따로 가져옴
