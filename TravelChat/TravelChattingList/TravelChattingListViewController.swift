@@ -11,10 +11,7 @@ import Kingfisher
 let chattingListXib = UINib(nibName: NIBName.ChattingListXib.rawValue, bundle: nil)
 var everyone = User.allCases
 var chatListFilter: [ChatRoom] = mockChatList
-var testChat : [Chat] = []
-var testList: [[String]] = []
-var testText = ""
-var testFilter: [[String]] = []
+var getSearchText = ""
 
 // 집합으로 방안에 유저들 모으고 걸러
 var testSet: Set<String> = []
@@ -80,7 +77,6 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
         // 구조체 내려보면, 뭔가 많이 구현되었다.
         // MARK: - 목쳇 리스트 채팅방 갯수 (배열갯수로 접근해봄)
         print(mockChatList.count)
-        print(testList.count)
         
         return chatListFilter.count
     }
@@ -115,8 +111,6 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
         // MARK: - 이미지 디자인 -> 셀
         // 디자인은 셀에서 처리해 보자.
         
-        testList.append(Array(testSet))
-        
         testSet.removeAll()
         
        
@@ -137,8 +131,8 @@ extension TravelChattingListViewController: UITableViewDelegate, UITableViewData
 extension TravelChattingListViewController: UISearchBarDelegate{
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        testText = searchText
-        print("인식되는 : ", testText)
+        getSearchText = searchText
+        print("인식되는 : ", getSearchText)
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         
@@ -157,15 +151,15 @@ extension TravelChattingListViewController: UISearchBarDelegate{
 extension TravelChattingListViewController {
     
     func findUserRoom() {
-           let filters = testText  // findUserName()
+           let filters = getSearchText  // findUserName()
         var filteredChatRooms: [ChatRoom] = []
         print(filters)
-           if !testText.isEmpty {
+           if !getSearchText.isEmpty {
                // 모든 채팅방 가보고
                
                for chatRooms in mockChatList{
                    for chats in chatRooms.chatList {
-                       if chats.user.rawValue == testText{
+                       if chats.user.rawValue == getSearchText{
                            print(chats)
                            filteredChatRooms.append(chatRooms)
                            break
