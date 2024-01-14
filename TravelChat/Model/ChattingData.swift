@@ -18,6 +18,7 @@ enum User: String, CaseIterable {
 
     var profileImage: String {
         switch self {
+       
         default: return rawValue
         }
     }

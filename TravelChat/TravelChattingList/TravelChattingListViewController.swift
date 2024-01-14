@@ -181,10 +181,39 @@ extension TravelChattingListViewController {
     }
     
     func findUserRoom() {
-        let filter = findUserName()
-        if filter.isEmpty{
-            
+           let filters = findUserName()
+        var filteredChatRooms: [ChatRoom] = []
+
+           if !testText.isEmpty {
+               // 모든 채팅방 가보고
+               for chatRooms in mockChatList {
+                   
+                   for userNames in filters {
+                       // print("필터링 된 ", userNames)
+                       for userName in userNames {
+                           // 방에서 꺼내와서
+                           // print("TestL", userName)
+                           if chatRooms.chatList.contains(where: {$0.user.rawValue == userName }){
+                               // print("필터링? ",chatRooms.chatroomName)
+                               filteredChatRooms.append(chatRooms)
+                               break
+                           }
+                           break
+                       }
+                       break
+                   }
+               }
+           } else {
+               // 검색어가 비어있으면 모든 채팅방을 표시
+               //filteredChatRooms = mockChatList
+           }
+        print(filteredChatRooms.count)
+        for item in filteredChatRooms{
+            print(item.chatroomName) // 왜 도봉 멘토방과 젝님이 나오는 거지 미쳐버리겠네
         }
+           // 필터링된 결과를 chatListFilter에 할당하고 테이블 뷰를 업데이트
+           //chatListFilter = filteredChatRooms
+           //chattingListTabelView.reloadData()
     }
     
 }
