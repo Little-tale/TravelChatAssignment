@@ -30,5 +30,6 @@ extension LeftUserChattingTableViewCell{
         DesignLabel.chatRoomMessageLeft.setting(UILabel: ProfileMessageLabel)
         DesignBackground.leftChat.setting(UIView: chattingLeftView)
         DesignLabel.date.setting(UILabel: dateLabel)
+        DesignLabel.leftUserName.setting(UILabel: profileNameLabel)
     }
 }

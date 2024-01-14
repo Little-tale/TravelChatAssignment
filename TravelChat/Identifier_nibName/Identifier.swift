@@ -21,5 +21,16 @@ enum Identifier: String{
 
 }
 
+enum chatLeftRight {
+    case left
+    case right
+    
+    func getIdenty() -> String{
+        switch self {
+        case .left : return Identifier.ChattingCell.left.rawValue
+        case .right : return Identifier.ChattingCell.right.rawValue
+        }
+    }
+}
 
 

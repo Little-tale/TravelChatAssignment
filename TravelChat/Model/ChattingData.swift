@@ -15,17 +15,9 @@ enum User: String, CaseIterable {
     case other_friend = "내옆자리의앞자리에개발잘하는친구"
     case simsim = "심심이"
     
-    // 1. 로우벨류 안됨
-    // Enum case 'hue' cannot be used as an instance member
-    // self. 해보니 됨.
+
     var profileImage: String {
         switch self {
-            /*
-        case .hue: return self.rawValue
-        case .jack: return self.rawValue
-        case . bran: return self.rawValue
-             */
-        // 아니 새상에 이밑에 구문으로 다해결해 놓으신 거였아..!
         default: return rawValue
         }
     }

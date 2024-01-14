@@ -57,38 +57,34 @@ extension ChattingRoomViewController: UITableViewDelegate, UITableViewDataSource
         guard let chat = chatRoom?.chatList[indexPath.row] else {
             return UITableViewCell()
         }
+        // Chat(user: TravelChat.User.hue, date: "2024-01-12 21:30", message: "열심히 일 하시고 계시는거죠?")
+        // print(chat)
+        // print("테스트 -> ",chat.user.rawValue)
         
         if chat.user != User.user{
             let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.ChattingCell.left.rawValue , for: indexPath) as! LeftUserChattingTableViewCell
             // cell.profileNameLabel.text = userName
-            cell.profileNameLabel.text = chatRoom?.chatList[indexPath.row].user.rawValue
+            // print( chat.user.rawValue )
+            cell.profileNameLabel.text = chat.user.rawValue
             
-            cell.ProfileMessageLabel.text = chatRoom?.chatList[indexPath.row].message
-            
+            cell.ProfileMessageLabel.text = chat.message
+            print("->", chat.message)
             // MARK: - 이미지 넣기
-            guard let chatListOf = chatRoom?.chatList[indexPath.row] else {
-                return cell
-            }
-            let miniProfileImage = chatListOf.user.profileImage
+         
+            let miniProfileImage = chat.user.profileImage
             cell.ProfileMiniImageView.image = UIImage(named: miniProfileImage)
-            
-            cell.dateLabel.text = chatListOf.getTime
-            
-            
+            cell.dateLabel.text = chat.getTime
+
             return cell
             
         }else {
             let rightCell = tableView.dequeueReusableCell(withIdentifier: Identifier.ChattingCell.right.rawValue, for: indexPath) as! RightUserChattingTableViewCell
-            guard let chatListOf = chatRoom?.chatList[indexPath.row] else {
-                return UITableViewCell()
-            }
             
             rightCell.righMessageLabel.text = chat.message
-            rightCell.rightDateLabel.text = chatListOf.getTime
+            rightCell.rightDateLabel.text = chat.getTime
             
             return rightCell
         }
-        
  
     }
 

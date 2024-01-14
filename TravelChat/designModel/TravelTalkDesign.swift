@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum leftORRight{
+    
+}
+
+
 enum DesignForRow {
     case TalkRoom
     
@@ -88,6 +93,7 @@ enum DesignLabel {
     case date
     case chatRoomMessageLeft
     case rightChatMessage
+    case leftUserName
     
     func setting(UILabel uil: UILabel) {
         switch self{
@@ -108,6 +114,8 @@ enum DesignLabel {
         case .rightChatMessage :
             uil.font = .systemFont(ofSize: 14)
             uil.textColor = .black
+        case .leftUserName :
+            uil.font = .systemFont(ofSize: 12)
         }
     }
 }

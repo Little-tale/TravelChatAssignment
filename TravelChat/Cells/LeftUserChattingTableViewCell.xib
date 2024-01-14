@@ -25,9 +25,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="400" verticalHuggingPriority="100" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lwn-ma-SsK">
-                        <rect key="frame" x="84" y="12" width="160" height="24"/>
+                        <rect key="frame" x="84.000000000000014" y="12" width="218.33333333333337" height="24"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="160" id="b1q-5D-6Q4"/>
                             <constraint firstAttribute="height" constant="24" id="uKc-hf-h4n"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -63,6 +62,7 @@
                     <constraint firstItem="Lwn-ma-SsK" firstAttribute="leading" secondItem="PNI-Nq-JXG" secondAttribute="trailing" constant="16" id="6Zn-dJ-YMT"/>
                     <constraint firstItem="rJv-SP-8bD" firstAttribute="top" secondItem="Lwn-ma-SsK" secondAttribute="bottom" constant="8" id="C8h-f2-ugr"/>
                     <constraint firstItem="FdV-Tj-k0Z" firstAttribute="leading" secondItem="rJv-SP-8bD" secondAttribute="trailing" constant="12" id="JwS-nP-bqX"/>
+                    <constraint firstItem="Lwn-ma-SsK" firstAttribute="trailing" secondItem="FdV-Tj-k0Z" secondAttribute="trailing" id="Rxh-aN-Yhg"/>
                     <constraint firstAttribute="bottom" secondItem="rJv-SP-8bD" secondAttribute="bottom" constant="12" id="Ub3-28-ggU"/>
                     <constraint firstItem="rJv-SP-8bD" firstAttribute="leading" secondItem="PNI-Nq-JXG" secondAttribute="trailing" constant="16" id="ZVD-VI-yN8"/>
                     <constraint firstItem="FdV-Tj-k0Z" firstAttribute="bottom" secondItem="rJv-SP-8bD" secondAttribute="bottom" id="agW-Qt-CDE"/>
